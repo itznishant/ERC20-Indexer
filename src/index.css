@@ -8,6 +8,10 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --clr-black: #202020;
+  --clr-grey: #c4c4c4;
+  --clr-grey-2: #8f8f8f;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,6 +34,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+/*  background-color: linear(to-l, #7928CA, #FF0080)>;*/
 }
 
 h1 {
@@ -43,8 +48,10 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: "Signika";
+  color: #FFFFFF;
   background-color: #1a1a1a;
+  text-transform: uppercase;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -54,6 +61,103 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* ------------------------------------------------------ */
+/* -- NAVIGATION -- */
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  background: lightslategray;
+}
+
+.nav__brand {
+/*  height: 60px;*/
+  display: flex;
+  align-items: center;
+  padding: 30px 60px;
+  grid-column: 1 / span 3;
+}
+
+.nav__brand img {
+  max-width: 125px;
+  margin-right: 10px;
+  height: auto;
+}
+
+.nav__brand h1 {
+  color: var(--clr-black);
+  font-family: "Signika";
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
+.nav__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  list-style: none;
+}
+
+.nav__links ul {
+  align-items: center;
+  text-align: center;
+}
+
+.nav__links li {
+  margin: 0 10px;
+  text-align: center;
+}
+
+.nav__links li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--clr-black);
+  font-weight: 600;
+}
+
+.nav__links li a:hover {
+  color: #FFFFFF;
+  transition: color 0.5s;
+}
+
+.nav__connect {
+  width: 175px;
+  height: 60px;
+  margin: 0 50px 0 auto;
+  background-color: var(--clr-black);
+  color: #FFFFFF;
+  font-family: "Signika";
+  font-size: 1.10em;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.nav__connect:hover {
+  background-color: #808080; /*Gray*/
+  border: none;
+}
+
+/* FOOTER
+--------------------------------------------- */
+
+.footer {
+  background: black;
+  color: #FFFFFF;
+  width: 100%;
+  height: auto;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1% 0%;
+  padding: 0.6% 0%;
 }
 
 @media (prefers-color-scheme: light) {
