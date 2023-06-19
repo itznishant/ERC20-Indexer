@@ -13,7 +13,8 @@ import { ethers } from 'ethers';
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
 import { useState } from 'react';
 import NavBar from './Navbar';
-import Footer from './Footer'; 
+import Footer from './Footer';
+import LoadingButton from './LoadingButton';
 
 function App() {
   const [provider, setProvider] = useState("");
@@ -23,6 +24,7 @@ function App() {
   const [results, setResults] = useState([]);
   const [data, setData] = useState("");
   const [hasQueried, setHasQueried] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [tokenDataObjects, setTokenDataObjects] = useState([]);
 
   async function getTokenBalance() {
@@ -32,27 +34,32 @@ function App() {
     };
     const alchemy = new Alchemy(config);
 
-    const addressInput = document.getElementById('addressInput').value;
+    // Button loading starts
+    setLoading(true);
+    
+    // const addressInput = document.getElementById('addressInput').value;
 
-    if(window.ethereum) {
-      setProvider(new ethers.providers.Web3Provider(ethereum));
-    }
+    // if(window.ethereum) {
+    //   setProvider(new ethers.providers.Web3Provider(ethereum));
+    // }
 
-    const isValidENS = await provider.resolveName(addressInput);
+    // const isValidENS = await provider.resolveName(addressInput);
 
-    console.log(isValidENS);
+    // console.log(isValidENS);
 
-    if (isValidENS) {
-        setENS(isValidENS);
-        setData(await alchemy.core.getTokenBalances(ENS));
+    // if (isValidENS) {
+    //     setENS(isValidENS);
+    //     setData(await alchemy.core.getTokenBalances(ENS));
 
-    } else {
-        setUserAddress(addressInput);
-        setData(await alchemy.core.getTokenBalances(userAddress));
-    }
+    // } else {
+    //     setUserAddress(addressInput);
+    //     setData(await alchemy.core.getTokenBalances(userAddress));
+    // }
 
-    console.log("ENS: ", ENS);
-    console.log("USER: ", userAddress);
+    // console.log("ENS: ", ENS);
+    // console.log("USER: ", userAddress);
+
+    const data = await alchemy.core.getTokenBalances(userAddress);
 
     setResults(data);
 
@@ -72,6 +79,7 @@ function App() {
     });
 
     setTokenDataObjects(await Promise.all(tokenDataPromises));
+    setLoading(false);
     setHasQueried(true);
   }
 
@@ -89,11 +97,10 @@ function App() {
           <Text 
             // bgGradient='linear(to left, rgb(121,40,202), rgb(255,0,128))'}
             bgClip="text"
-            color="blue"
-            fontSize={24}
+            color="navy"
+            fontSize={32}
           >
-            Plug in an address and this dAPP will return its ERC20
-            Token Balances!
+            Plug-in an address to get ERC20 Balances!
           </Text>
           </Flex>
         </Center>
@@ -104,11 +111,11 @@ function App() {
           justifyContent={'center'}
         >
           <Heading mt={42} >
-            Get all the ERC20 token balances of this address:
+            Get ALL the ERC20 token balances of this address:
           </Heading>
           <Input
             id="addressInput"
-            onChange={(e) => e.target.value}
+            onChange={(e) => setUserAddress(e.target.value)}
             color="black"
             placeholder="Enter a wallet address example: 0x123 or example.eth"
             w="600px"
@@ -118,8 +125,9 @@ function App() {
             opacity={90}
             fontSize={18}
           />
-          <Button fontSize={20} onClick={getTokenBalance} mt={36} bgColor="cornflowerblue">
-            Get Token Balances
+
+          <Button onClick = {getTokenBalance} className = {loading ? `btn btn--loading` : `btn`}>
+              GET TOKEN BALANCES
           </Button>
 
           <Heading my={36}>ERC20 Balances:</Heading>
@@ -131,27 +139,28 @@ function App() {
                   <Flex
                     flexDir={'column'}
                     color="white"
-                    bg="blue"
-                    w={'20vw'}
+                    bg="slategray"
+                    w={'16vw'}
                     key={i}
                   >
                     <Box>
-                      <b>Symbol:</b> ${tokenDataObjects[i].symbol}&nbsp;
+                      <b>SYMBOL: </b>{tokenDataObjects[i].symbol}&nbsp;
                     </Box>
                     <Box>
-                      <b>Balance:</b>&nbsp;
-                      {Utils.formatUnits(
+                      <b>BALANCE: </b>&nbsp;
+                      { Math.round(Utils.formatUnits(
                         e.tokenBalance,
                         tokenDataObjects[i].decimals
-                      )}
+                      ) * 1e6) / 1e6 }
                     </Box>
-                    <Image src={tokenDataObjects[i].logo} />
+                    <Image src={tokenDataObjects[i].logo} width="225px" height="200px" />
                   </Flex>
                 );
               })}
             </SimpleGrid>
           ) : (
             'Please make a query! This may take a few seconds. . .'
+             <LoadingButton> <LoadingButton/>
           )}
         </Flex>
         <div> <Footer /> </div>
