@@ -15,10 +15,8 @@ import { useState } from 'react';
 import NavBar from './Navbar';
 import Footer from './Footer';
 import LoadingButton from './LoadingButton';
-import { ColorModeToggler } from './ColorModeToggler';
 
 function App() {
-  // const { colorMode, toggleColorMode } = useColorMode();
   const [account, setAccount] = useState(null);
   const [userAddress, setUserAddress] = useState("");
   const [ENS, setENS] = useState(null);
@@ -77,7 +75,8 @@ function App() {
             // bgGradient='linear(to left, rgb(121,40,202), rgb(255,0,128))'}
             bgClip="text"
             color="navy"
-            fontSize={32}
+            fontSize={24}
+            mt={10}
           >
             Plug-in an address to get ERC20 Balances!
           </Text>
@@ -89,7 +88,7 @@ function App() {
           alignItems="center"
           justifyContent={'center'}
         >
-          <Heading mt={42} >
+          <Heading mt={24} mb={4} fontSize={32} >
             Get ALL the ERC20 token balances of this address:
           </Heading>
           <Input
@@ -105,9 +104,11 @@ function App() {
             fontSize={18}
           />
 
-          <Button onClick = {getTokenBalance} className = {loading ? `btn btn--loading` : `btn`}>
+ {/*         <Button onClick = {getTokenBalance} className = {loading ? `btn btn--loading` : `btn`}>
               GET TOKEN BALANCES
-          </Button>
+          </Button>*/}
+
+          <LoadingButton />
 
           <Heading my={36}>ERC20 Balances:</Heading>
 
@@ -139,7 +140,6 @@ function App() {
             </SimpleGrid>
           ) : (
             'Please make a query! This may take a few seconds. . .'
-             <LoadingButton> <LoadingButton/>
           )}
         </Flex>
         

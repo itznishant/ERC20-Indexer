@@ -64,22 +64,13 @@ button:focus-visible {
 }
 
 /* -- LIGHT | DARK SWITCHER BUTTON -- */
-
 .button__toogle {
-  border-radius: 8px;
-  border: 1px solid transparent;
   margin: auto;
   margin-right: 0px;
   width: 80px;
   height: 60px;
   padding: 0.8em 0.8em;
-  font-size: 0.9em;
-  font-weight: 600;
-  font-family: "Signika";
-  color: #FFFFFF;
-  background-color: #1a1a1a;
   border: 1px solid transparent;
-  text-transform: uppercase;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -212,7 +203,7 @@ nav {
   height: 60px;
   margin: auto 40px auto auto;
   background-color: var(--clr-black);
-  color: #FFFFFF;
+  color: #EF6EAE;
   font-family: "Signika";
   font-size: 1.10em;
   font-weight: 600;
@@ -222,10 +213,21 @@ nav {
   transition: all 0.25s ease;
 }
 
-.nav__connect:hover {
-/*  background-color: #808080; Gray*/
-  opacity: 85%;
+.nav__connect:hover,
+.nav__connect:focus {
+  border-color: var(--hover);
+  color: #FFFFFF;
   border: none;
+}
+
+.nav__connect::hover,
+.nav__connect::focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#FFF, 0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
 }
 
 /* FOOTER
@@ -240,10 +242,10 @@ nav {
   text-align: center;
   margin: 1% 0%;
   padding: 0.6% 0%;
-  position: fixed;
+  position: relative;
 }
 
-@media (prefers-color-scheme: light) {
+/*@media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #FFFFFF;
@@ -254,4 +256,4 @@ nav {
   button {
     background-color: #f9f9f9;
   }
-}
+}*/

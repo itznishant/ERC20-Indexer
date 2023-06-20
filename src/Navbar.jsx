@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
-import { Button, useColorMode } from "@chakra-ui/react";
-// import { ColorModeToggler } from './ColorModeToggler';
+import { Button, IconButton, useColorMode } from "@chakra-ui/react";
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 export default function NavBar({ account, setAccount }) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -9,11 +9,6 @@ export default function NavBar({ account, setAccount }) {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     const account = ethers.utils.getAddress(accounts[0])
     setAccount(account);
-  }
-
-  const colorModeToggler = () => {
-    console.log("LIGHT / DARK MODE SWITCHER");
-    toggleColorMode;
   }
 
   return (
@@ -32,9 +27,9 @@ export default function NavBar({ account, setAccount }) {
 
       </div>
 
-      <Button className="button__toogle" onClick={colorModeToggler} >
-      {colorMode === 'light' ? 'Dark' : 'Light'}
-      </Button>
+      <IconButton className="button__toogle"
+        icon={colorMode === 'light' ? <FaSun /> : <FaMoon />}  isRound="true" onClick={toggleColorMode}
+      />
 
       {account ? (
         <button
