@@ -63,6 +63,36 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* -- LIGHT | DARK SWITCHER BUTTON -- */
+
+.button__toogle {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin: auto;
+  margin-right: 0px;
+  width: 80px;
+  height: 60px;
+  padding: 0.8em 0.8em;
+  font-size: 0.9em;
+  font-weight: 600;
+  font-family: "Signika";
+  color: #FFFFFF;
+  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.button__toogle:hover {
+  border-color: #646cff;
+}
+
+.button__toogle:focus,
+.button__toogle:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
 /* -- LOADING BUTTON -- */
 
 .btn {
@@ -120,8 +150,7 @@ button:focus-visible {
 
 nav {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
   background: lightslategray;
 }
 
@@ -181,7 +210,7 @@ nav {
 .nav__connect {
   width: 175px;
   height: 60px;
-  margin: 0 50px 0 auto;
+  margin: auto 40px auto auto;
   background-color: var(--clr-black);
   color: #FFFFFF;
   font-family: "Signika";
@@ -211,6 +240,7 @@ nav {
   text-align: center;
   margin: 1% 0%;
   padding: 0.6% 0%;
+  position: fixed;
 }
 
 @media (prefers-color-scheme: light) {

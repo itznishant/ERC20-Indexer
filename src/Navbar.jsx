@@ -1,10 +1,19 @@
 import { ethers } from 'ethers';
+import { Button, useColorMode } from "@chakra-ui/react";
+// import { ColorModeToggler } from './ColorModeToggler';
 
 export default function NavBar({ account, setAccount }) {
+  const { colorMode, toggleColorMode } = useColorMode();
+  
   const connectHandler = async () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     const account = ethers.utils.getAddress(accounts[0])
     setAccount(account);
+  }
+
+  const colorModeToggler = () => {
+    console.log("LIGHT / DARK MODE SWITCHER");
+    toggleColorMode;
   }
 
   return (
@@ -20,7 +29,12 @@ export default function NavBar({ account, setAccount }) {
         <ul className= 'nav__links'>
           <li><a href='https://github.com/itznishant' target='_blank' rel='noreferrer'>github</a></li>
         </ul>
+
       </div>
+
+      <Button className="button__toogle" onClick={colorModeToggler} >
+      {colorMode === 'light' ? 'Dark' : 'Light'}
+      </Button>
 
       {account ? (
         <button
@@ -38,7 +52,6 @@ export default function NavBar({ account, setAccount }) {
           CONNECT
         </button>
         )}
-
     </nav>
   );
 }

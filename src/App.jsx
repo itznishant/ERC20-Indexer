@@ -15,9 +15,10 @@ import { useState } from 'react';
 import NavBar from './Navbar';
 import Footer from './Footer';
 import LoadingButton from './LoadingButton';
+import { ColorModeToggler } from './ColorModeToggler';
 
 function App() {
-  const [provider, setProvider] = useState("");
+  // const { colorMode, toggleColorMode } = useColorMode();
   const [account, setAccount] = useState(null);
   const [userAddress, setUserAddress] = useState("");
   const [ENS, setENS] = useState(null);
@@ -36,28 +37,6 @@ function App() {
 
     // Button loading starts
     setLoading(true);
-    
-    // const addressInput = document.getElementById('addressInput').value;
-
-    // if(window.ethereum) {
-    //   setProvider(new ethers.providers.Web3Provider(ethereum));
-    // }
-
-    // const isValidENS = await provider.resolveName(addressInput);
-
-    // console.log(isValidENS);
-
-    // if (isValidENS) {
-    //     setENS(isValidENS);
-    //     setData(await alchemy.core.getTokenBalances(ENS));
-
-    // } else {
-    //     setUserAddress(addressInput);
-    //     setData(await alchemy.core.getTokenBalances(userAddress));
-    // }
-
-    // console.log("ENS: ", ENS);
-    // console.log("USER: ", userAddress);
 
     const data = await alchemy.core.getTokenBalances(userAddress);
 
@@ -163,9 +142,11 @@ function App() {
              <LoadingButton> <LoadingButton/>
           )}
         </Flex>
-        <div> <Footer /> </div>
+        
       </Box>
-    </>
+
+    <Footer />
+  </>
   );
 }
 
