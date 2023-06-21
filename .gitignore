@@ -12,12 +12,16 @@ dist
 dist-ssr
 *.local
 
+# not tracked
+#src/theme.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
 .env
+.env.development
 *.suo
 *.ntvs*
 *.njsproj

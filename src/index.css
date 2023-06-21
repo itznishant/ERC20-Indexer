@@ -8,6 +8,10 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --clr-black: #202020;
+  --clr-grey: #c4c4c4;
+  --clr-grey-2: #8f8f8f;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,6 +34,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+/*  background-color: linear(to-l, #7928CA, #FF0080)>;*/
 }
 
 h1 {
@@ -43,8 +48,10 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: "Signika";
+  color: #FFFFFF;
   background-color: #1a1a1a;
+  text-transform: uppercase;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -56,10 +63,193 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* -- LIGHT | DARK SWITCHER BUTTON -- */
+.button__toogle {
+  margin: auto;
+  margin-right: 0px;
+  width: 80px;
+  height: 60px;
+  padding: 0.8em 0.8em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.button__toogle:hover {
+  border-color: #646cff;
+}
+
+.button__toogle:focus,
+.button__toogle:focus-visible {
+  outline: 2px auto -webkit-focus-ring-color;
+}
+
+/* -- LOADING BUTTON -- */
+
+.btn {
+  position: relative;
+  padding: 1.2em 3.6em;
+  margin-top: 30px;
+  background: black;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:active {
+  background: black;
+}
+
+.btn__text {
+  font-weight: 600;
+  font-size: 40px;
+  font-family: "Signika";
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.btn--loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  margin-right: 16px;
+  border: 3px solid transparent;
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: btn-loading-spinner 1s ease infinite;
+}
+
+@keyframes btn-loading-spinner {
+  from {
+      transform: rotate(0turn);
+  }
+  to {
+      transform: rotate(1turn);
+  }
+}
+
+/* ------------------------------------------------------ */
+/* -- NAVIGATION -- */
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: lightslategray;
+}
+
+.nav__brand {
+/*  height: 60px;*/
+  display: flex;
+  align-items: center;
+  padding: 30px 60px;
+  grid-column: 1 / span 3;
+}
+
+.nav__brand img {
+  max-width: 125px;
+  margin-right: 10px;
+  height: auto;
+}
+
+.nav__brand h1 {
+  color: var(--clr-black);
+  font-family: "Signika";
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.nav__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  list-style: none;
+}
+
+.nav__links ul {
+  align-items: center;
+  text-align: center;
+}
+
+.nav__links li {
+  margin: 0;
+  padding-left: 50px;
+  text-align: center;
+}
+
+.nav__links li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--clr-black);
+  font-weight: 600;
+}
+
+.nav__links li a:hover {
+  color: #FFFFFF;
+  transition: color 0.5s;
+}
+
+.nav__connect {
+  width: 175px;
+  height: 60px;
+  margin: auto 40px auto auto;
+  background-color: var(--clr-black);
+  color: #EF6EAE;
+  font-family: "Signika";
+  font-size: 1.10em;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.nav__connect:hover,
+.nav__connect:focus {
+/*  border-color: var(--hover);*/
+  color: #FFFFFF;
+  border: none;
+}
+
+/*.nav__connect::hover,
+.nav__connect::focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#FFF, 0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
+}*/
+
+/* FOOTER
+--------------------------------------------- */
+
+.footer {
+  background: black;
+  color: #FFFFFF;
+  width: 100%;
+  height: auto;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1% 0%;
+  padding: 0.6% 0%;
+  position: relative;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
   }
   a:hover {
     color: #747bff;
