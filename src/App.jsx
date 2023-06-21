@@ -7,7 +7,6 @@ import {
   Image,
   Input,
   SimpleGrid,
-  Spinner,
   Text,
   useColorMode
 } from '@chakra-ui/react';

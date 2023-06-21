@@ -13,8 +13,7 @@ dist-ssr
 *.local
 
 # not tracked
-src/ColorModeToggler.jsx
-src/theme.js
+#src/theme.js
 
 # Editor directories and files
 .vscode/*
