@@ -7,6 +7,7 @@ import {
   Image,
   Input,
   SimpleGrid,
+  Spinner,
   Text,
   useColorMode
 } from '@chakra-ui/react';
@@ -142,7 +143,10 @@ function App() {
               })}
             </SimpleGrid>
           ) : (
-            'Please make a query! This may take a few seconds. . .'
+                <Spinner
+                thickness='6px' speed='0.6s'
+                emptyColor='gray.300' color='blue.500'  size="xl"
+                />
           )}
         </Flex>
         

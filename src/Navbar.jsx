@@ -22,7 +22,7 @@ export default function NavBar({ account, setAccount }) {
         </ul>
 
         <ul className= 'nav__links'>
-          <li><a href='https://github.com/itznishant' target='_blank' rel='noreferrer'>github</a></li>
+          <li><a href='https://github.com/itznishant?tab=repositories' target='_blank' rel='noreferrer'>github</a></li>
         </ul>
 
       </div>
