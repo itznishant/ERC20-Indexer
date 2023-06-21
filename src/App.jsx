@@ -8,13 +8,13 @@ import {
   Input,
   SimpleGrid,
   Text,
+  useColorMode
 } from '@chakra-ui/react';
 import { ethers } from 'ethers';
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
 import { useState } from 'react';
 import NavBar from './Navbar';
 import Footer from './Footer';
-import LoadingButton from './LoadingButton';
 
 function App() {
   const [account, setAccount] = useState(null);
@@ -25,6 +25,11 @@ function App() {
   const [hasQueried, setHasQueried] = useState(false);
   const [loading, setLoading] = useState(false);
   const [tokenDataObjects, setTokenDataObjects] = useState([]);
+  // const { toggleColorMode } = useColorMode();
+
+  // const textColor = useColorModeValue('navy', 'white')
+  // const headingColor = useColorModeValue('gray.800', 'white');
+  // const backgroundColorBox = useColorModeValue('whitesmoke', 'gray.900');
 
   async function getTokenBalance() {
     const config = {
@@ -74,7 +79,7 @@ function App() {
           <Text 
             // bgGradient='linear(to left, rgb(121,40,202), rgb(255,0,128))'}
             bgClip="text"
-            color="navy"
+            color='navy'
             fontSize={24}
             mt={10}
           >
@@ -104,13 +109,11 @@ function App() {
             fontSize={18}
           />
 
- {/*         <Button onClick = {getTokenBalance} className = {loading ? `btn btn--loading` : `btn`}>
-              GET TOKEN BALANCES
-          </Button>*/}
+          <button onClick = {getTokenBalance} className = {loading ? `btn btn--loading` : `btn`}>
+            GET TOKEN BALANCES
+          </button>
 
-          <LoadingButton />
-
-          <Heading my={36}>ERC20 Balances:</Heading>
+          <Heading my={36} >ERC20 Balances:</Heading>
 
           {hasQueried ? (
             <SimpleGrid w={'90vw'} columns={4} spacing={24}>

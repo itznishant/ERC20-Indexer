@@ -81,7 +81,7 @@ button:focus-visible {
 
 .button__toogle:focus,
 .button__toogle:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px auto -webkit-focus-ring-color;
 }
 
 /* -- LOADING BUTTON -- */
@@ -164,7 +164,7 @@ nav {
   font-family: "Signika";
   font-size: 2em;
   font-weight: 700;
-  letter-spacing: 0px;
+  letter-spacing: 2px;
 }
 
 .nav__links {
@@ -181,7 +181,8 @@ nav {
 }
 
 .nav__links li {
-  margin: 0 10px;
+  margin: 0;
+  padding-left: 50px;
   text-align: center;
 }
 
@@ -215,12 +216,12 @@ nav {
 
 .nav__connect:hover,
 .nav__connect:focus {
-  border-color: var(--hover);
+/*  border-color: var(--hover);*/
   color: #FFFFFF;
   border: none;
 }
 
-.nav__connect::hover,
+/*.nav__connect::hover,
 .nav__connect::focus {
   animation: pulse 1s;
   box-shadow: 0 0 0 2em rgba(#FFF, 0);
@@ -228,7 +229,7 @@ nav {
 
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 var(--hover); }
-}
+}*/
 
 /* FOOTER
 --------------------------------------------- */
@@ -245,7 +246,7 @@ nav {
   position: relative;
 }
 
-/*@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #FFFFFF;
@@ -256,4 +257,4 @@ nav {
   button {
     background-color: #f9f9f9;
   }
-}*/
+}

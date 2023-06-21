@@ -15,8 +15,8 @@ export default function NavBar({ account, setAccount }) {
     <nav>
       <div className='nav__brand'>
 
-        <h1>ERC20 INDEXER</h1>
-        
+        <h1>TOKEN LISTER </h1>
+
         <ul className= 'nav__links'>
           <li><a href='https://linktr.ee/nishant.social' target='_blank' rel='noreferrer'>about</a></li>
         </ul>
@@ -28,7 +28,7 @@ export default function NavBar({ account, setAccount }) {
       </div>
 
       <IconButton className="button__toogle"
-        icon={colorMode === 'light' ? <FaSun /> : <FaMoon />}  isRound="true" onClick={toggleColorMode}
+        icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}  isRound="true" onClick={toggleColorMode}
       />
 
       {account ? (
