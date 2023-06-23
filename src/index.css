@@ -66,7 +66,7 @@ button:focus-visible {
 .button__toogle {
   margin: auto;
   margin-right: 0px;
-  width: 80px;
+  width: 60px;
   height: 60px;
   padding: 0.8em 0.8em;
   border: 1px solid transparent;
@@ -74,9 +74,9 @@ button:focus-visible {
   transition: border-color 0.25s;
 }
 
-.button__toogle:hover {
+/*.button__toogle:hover {
   border-color: #646cff;
-}
+}*/
 
 .button__toogle:focus,
 .button__toogle:focus-visible {
