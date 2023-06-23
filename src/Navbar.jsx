@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 import { Button, IconButton, useColorMode } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 export default function NavBar({ account, setAccount }) {
@@ -28,7 +29,7 @@ export default function NavBar({ account, setAccount }) {
       </div>
 
       <IconButton className="button__toogle"
-        icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}  isRound="true" onClick={toggleColorMode}
+        icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }  isRound="true" onClick={toggleColorMode}
       />
 
       {account ? (
