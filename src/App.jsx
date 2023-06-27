@@ -9,7 +9,8 @@ import {
   SimpleGrid,
   Spinner,
   Text,
-  useColorMode
+  useColorMode,
+  useColorModeValue
 } from '@chakra-ui/react';
 import { ethers } from 'ethers';
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
@@ -28,9 +29,11 @@ function App() {
   const [tokenDataObjects, setTokenDataObjects] = useState([]);
   // const { toggleColorMode } = useColorMode();
 
-  // const textColor = useColorModeValue('navy', 'white')
-  // const headingColor = useColorModeValue('gray.800', 'white');
-  // const backgroundColorBox = useColorModeValue('whitesmoke', 'gray.900');
+  // Available Colours:
+  // blue, cyan, gray, green, orange, pink, purple, red, teal, yellow
+
+  // edit this variable to change the color theme
+  const color = "teal";
 
   async function getTokenBalance() {
     const config = {
@@ -68,23 +71,25 @@ function App() {
 
   return (
     <>
-      <NavBar account= {account} setAccount= {setAccount} />
+      <NavBar account= {account} setAccount= {setAccount} color={color} />
 
-      <Box w="100vw" backgroundColor='whitesmoke'>
+      <Box w="100vw" backgroundColor= {useColorModeValue('whitesmoke', color)} >
         <Center>
           <Flex
             alignItems={'center'}
             justifyContent="center"
             flexDirection={'column'}
           >
+          
           <Text 
             // bgGradient='linear(to left, rgb(121,40,202), rgb(255,0,128))'}
             bgClip="text"
-            color='navy'
-            fontSize={24}
-            mt={10}
+            bgGradient='linear(to-l, #7928CA, #FF0080)'
+            fontSize={32}
+            mt={24}
+            mb={4}
           >
-            Plug-in an address to get ERC20 Balances!
+            Plug an address to get ERC20 Balances!
           </Text>
           </Flex>
         </Center>
@@ -94,7 +99,7 @@ function App() {
           alignItems="center"
           justifyContent={'center'}
         >
-          <Heading mt={24} mb={4} fontSize={32} >
+          <Heading mt={16} mb={4} fontSize={32} >
             Get ALL the ERC20 token balances of this address:
           </Heading>
           <Input
@@ -122,8 +127,8 @@ function App() {
                 return (
                   <Flex
                     flexDir={'column'}
-                    color="white"
-                    bg="slategray"
+                    color={color}
+                    bg={useColorModeValue(color, 'gray.100')}
                     w={'16vw'}
                     key={i}
                   >
@@ -145,7 +150,7 @@ function App() {
           ) : (
                 <Spinner
                 thickness='6px' speed='0.6s'
-                emptyColor='gray.300' color='blue.500'  size="xl"
+                emptyColor='gray.200' color={color}  size="xl"
                 />
           )}
         </Flex>
