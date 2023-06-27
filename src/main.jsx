@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { ColorModeScript, ChakraProvider } from "@chakra-ui/react"
-import { theme } from './theme.js'
-import App from './App'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ColorModeScript, ChakraProvider } from "@chakra-ui/react";
+import { theme } from './theme';
+import App from './App';
+import './index.css';
 
 if (!window.ethereum) {
   ReactDOM.createRoot(document.getElementById('root')).render(
@@ -13,11 +13,11 @@ Web3 wallet NOT detected! Consider installing a browser wallet like MetaMask. If
   );
 } else {
   ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ChakraProvider>
+  <ChakraProvider theme={theme}>
+    <React.StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <App />
-    </ChakraProvider>
-  </React.StrictMode>,
+    </React.StrictMode>
+  </ChakraProvider>
   );
 }
